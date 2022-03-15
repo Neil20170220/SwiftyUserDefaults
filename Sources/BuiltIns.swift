@@ -88,11 +88,3 @@ extension Array: DefaultsSerializable where Element: DefaultsSerializable {
         fatalError("Multidimensional arrays are not supported yet")
     }
 }
-
-extension Optional: DefaultsSerializable where Wrapped: DefaultsSerializable {
-    public typealias Bridge = DefaultsOptionalBridge<Wrapped.Bridge>
-    public typealias ArrayBridge = DefaultsOptionalBridge<Wrapped.ArrayBridge>
-
-    public static var _defaults: DefaultsOptionalBridge<Wrapped.Bridge> { return DefaultsOptionalBridge(bridge: Wrapped._defaults) }
-    public static var _defaultsArray: DefaultsOptionalBridge<Wrapped.ArrayBridge> { return DefaultsOptionalBridge(bridge: Wrapped._defaultsArray) }
-}
